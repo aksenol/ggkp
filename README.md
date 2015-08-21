@@ -1,2 +1,4 @@
 # ggkp
-Güzel günler kapımızda peydahlandı.
+Güzel Günler Kapımızda Peydahlandı.
+Geçen Gün Konuştuğumuz Proje.
+G... G... K... Projesi
