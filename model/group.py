@@ -5,7 +5,7 @@ class Group(db.Model):
 	name = db.Column(db.String(120))
 	description = db.Column(db.String(120))
 	tag = db.Column(db.String(20))
-	is_public = db.Column(db.Booelan)
+	is_public = db.Column(db.Boolean)
 	settings = db.Column(db.SmallInteger)
 	creation_date = db.Column(db.DateTime)
 
