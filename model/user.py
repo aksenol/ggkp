@@ -19,8 +19,8 @@ class User(db.Model):
 		secondary = ban, backref = db.backref('banned_users', lazy = 'dynamic'))
 	admin_of = db.relationship('Group')
 
-    def __init__(self):
-    	pass
+	def __init__(self):
+		pass
 
-    def __repr__(self):
-        return '<User %r>' % self.user_id
+	def __repr__(self):
+		return '<User %r>' % self.user_id

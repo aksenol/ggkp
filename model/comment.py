@@ -5,14 +5,14 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     post_id = db.Column(db.Integer, db.ForeignKey('post.post_id'))
     reply_to = db.Column(db.Integer, db.ForeignKey('comment.comment_id'))
-   	message = db.Column(db.String(5000))
-   	publish_date = db.Column(db.DateTime)
+    message = db.Column(db.String(5000))
+    publish_date = db.Column(db.DateTime)
 
     votes = db.relationship('User', secondary=vote)
   
 
     def __init__(self):
-    	pass
+        pass
 
     def __repr__(self):
         return '<Comment %r>' % self.comment_id
