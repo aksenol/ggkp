@@ -1,4 +1,5 @@
 from shared import db
+from datetime import datetime
 
 subscribe = db.Table('subscribe',
 	db.Column('user_id', db.Integer, db.ForeignKey('user.user_id')),
@@ -17,12 +18,12 @@ ban = db.Table('ban',
 
 class User(db.Model):
 	user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	picture = db.Column(db.String(120))
-	fb_token = db.Column(db.String(120))
 	first_name = db.Column(db.String(80))
 	last_name = db.Column(db.String(80))
 	email = db.Column(db.String(80))
+	picture = db.Column(db.String(120))
 	age_range = db.Column(db.String(80))
+	fb_token = db.Column(db.String(120))
 	gender = db.Column(db.Integer)
 	reg_date = db.Column(db.DateTime)
 	
@@ -33,8 +34,16 @@ class User(db.Model):
 		secondary = ban, backref = db.backref('banned_users', lazy = 'dynamic'))
 	admin_of = db.relationship('Group')
 
-	def __init__(self):
-		pass
+	def __init__(self, first_name, last_name, email, picture, age_range, fb_token, gender):
+		self.first_name = first_name
+		self.last_name = last_name
+		self.email = email
+		self.picture = picture
+		self.age_range = age_range 
+		self.fb_token = fb_token
+		self.gender = gender
+		self.reg_date = datetime.now()
+
 
 	def __repr__(self):
 		return '<User %r>' % self.user_id

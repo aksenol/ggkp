@@ -1,4 +1,5 @@
 from shared import db
+from datetime import datetime
 
 vote = db.Table('vote',
     db.Column('user_id', db.Integer, db.ForeignKey('user.user_id')),
@@ -18,8 +19,12 @@ class Comment(db.Model):
     votes = db.relationship('User', secondary=vote)
   
 
-    def __init__(self):
-        pass
+    def __init__(self, message, reply_to, user_id, post_id):
+        self.message = message
+        self.reply_to = reply_to
+        self.user_id  = user_id
+        self.post_id = post_id
+
 
     def __repr__(self):
         return '<Comment %r>' % self.comment_id

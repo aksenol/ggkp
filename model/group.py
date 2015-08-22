@@ -1,19 +1,28 @@
 from shared import db
+from datetime import datetime
+
 class Group(db.Model):
 	group_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	creator_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
 	name = db.Column(db.String(120))
 	description = db.Column(db.String(120))
 	tag = db.Column(db.String(20))
 	is_public = db.Column(db.Boolean)
+	creator_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
 	settings = db.Column(db.SmallInteger)
 	creation_date = db.Column(db.DateTime)
 
 	posts = db.relationship('Post', backref = 'group', lazy = 'dynamic')
 
 
-	def __init__(self):
-		pass
+	def __init__(self, name, description, tag, is_public, creator_id, settings):
+		self.name = name
+		self.description = description
+		self.tag = tag
+		self.is_public = is_public
+		self.creator_id = creator_id
+		self.settings = settings
+		self.creation_date = datetime.now()
+
 
 	def __repr__(self):
 		return '<Group %r>' % self.group_id
