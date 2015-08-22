@@ -2,17 +2,17 @@ from shared import db
 
 subscribe = db.Table('subscribe',
 	db.Column('user_id', db.Integer, db.ForeignKey('user.user_id')),
-	db.Column('group_id', db.Integer, db.ForeignKey('group.group_id'),
+	db.Column('group_id', db.Integer, db.ForeignKey('group.group_id')),
 	db.Column('time',db.DateTime),
-	db.Column('is_submitter',db.Boolean))
+	db.Column('is_submitter',db.Boolean)
 )
 
 ban = db.Table('ban',
 	db.Column('user_id', db.Integer, db.ForeignKey('user.user_id')),
-	db.Column('group_id', db.Integer, db.ForeignKey('group.group_id'),
-	db.Column('banned_by', db.Integer, db.ForeignKey('user.user_id'),
+	db.Column('group_id', db.Integer, db.ForeignKey('group.group_id')),
+	db.Column('banned_by', db.Integer, db.ForeignKey('user.user_id')),
 	db.Column('time',db.DateTime),
-	db.Column('is_shadow',db.Boolean))
+	db.Column('is_shadow',db.Boolean)
 )
 
 class User(db.Model):

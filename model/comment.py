@@ -1,5 +1,12 @@
 from shared import db
-from vote import vote
+
+vote = db.Table('vote',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.user_id')),
+    db.Column('comment_id', db.Integer, db.ForeignKey('comment.comment_id')),
+    db.Column('time',db.DateTime),
+    db.Column('is_upvote',db.Boolean)
+)
+
 class Comment(db.Model):
     comment_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
