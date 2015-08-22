@@ -1,3 +1,2 @@
-#from flask.ext.sqlalchemy import SQLAlchemy
-
-db = int(5)
+from flask.ext.sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
