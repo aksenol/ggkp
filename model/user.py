@@ -1,6 +1,20 @@
 from shared import db
-from subscribe import subscribe
-from ban import ban
+
+subscribe = db.Table('subscribe',
+	db.Column('user_id', db.Integer, db.ForeignKey('user.user_id')),
+	db.Column('group_id', db.Integer, db.ForeignKey('group.group_id'),
+	db.Column('time',db.DateTime),
+	db.Column('is_submitter',db.Boolean))
+)
+
+ban = db.Table('ban',
+	db.Column('user_id', db.Integer, db.ForeignKey('user.user_id')),
+	db.Column('group_id', db.Integer, db.ForeignKey('group.group_id'),
+	db.Column('banned_by', db.Integer, db.ForeignKey('user.user_id'),
+	db.Column('time',db.DateTime),
+	db.Column('is_shadow',db.Boolean))
+)
+
 class User(db.Model):
 	user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	picture = db.Column(db.String(120))
