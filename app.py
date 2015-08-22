@@ -3,6 +3,8 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from model.shared import db
 from model.user import User
 from model.group import Group
+from model.post import Post
+from model.comment import Comment
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:43152957@localhost/ggkp"
