@@ -13,6 +13,9 @@ class Group(db.Model):
 
 	posts = db.relationship('Post', backref = 'group', lazy = 'dynamic')
 
+	#backrefs
+	#subscribers -> list
+	#banned_users -> list
 
 	def __init__(self, name, description, tag, is_public, creator_id, settings):
 		self.name = name
@@ -23,17 +26,21 @@ class Group(db.Model):
 		self.settings = settings
 		self.creation_date = datetime.now()
 
-
 	def __repr__(self):
 		return '<Group %r>' % self.group_id
+
 	def get_hot_groups(page=0): # -> group_id []
 		pass
+
 	def get_trending_groups(page=0): # -> group_id []
 		pass
+
 	def	get_new_groups(page=0): # -> group_id []
 		pass
+
 	def get_group(group_id): # -> group
 		pass
+
 	def create_group(
 			name, desc, is_public, creator_id, 
 			desc=’’, tag=’’,picture=’’,

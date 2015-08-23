@@ -28,7 +28,7 @@ class User(db.Model):
 	reg_date = db.Column(db.DateTime)
 	
 	posts = db.relationship('Post', backref = 'publisher', lazy = 'dynamic')
-	groups = db.relationship('Group',
+	subscribed_groups = db.relationship('Group',
 		secondary = subscribe, backref = db.backref('subscribers', lazy = 'dynamic'))
 	banned_from = db.relationship('Group',
 		secondary = ban, backref = db.backref('banned_users', lazy = 'dynamic'))
@@ -50,7 +50,7 @@ class User(db.Model):
 	def get_subscribed_groups(user_id, page=0): # -> group_id []
 		pass
 
-	def add_subscriber(group_id, user_id, is_submitter): # -> bool	
+	def subscribe_to(group_id, user_id, is_submitter): # -> bool	
 		pass
 
 	def get_front_page(user_id): # -> post_id []

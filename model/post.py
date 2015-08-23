@@ -19,6 +19,11 @@ class Post(db.Model):
 
     seen_by = db.relationship('User', secondary=seen)
 
+    #backrefs
+    #publisher -> submitted by
+    #group -> submitted in 
+
+
     def __init__(self, message, url, settings, publisher_id, group_id):
         self.message = message
         self.url = url
@@ -41,6 +46,9 @@ class Post(db.Model):
 
     def get_post(post_id): # -> post
         pass
-        
+
     def create_post(group_id,user_id, name, desc, url, picture, settings): # -> post_id
+        pass
+
+    def get_front_page(user_id): # -> post_id []
         pass
