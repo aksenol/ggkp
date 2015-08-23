@@ -52,13 +52,13 @@ class User(db.Model):
         return [group.group_id for group in user.subscribed_groups]
 
 	def subscribe_to(self, group_id, user_id, is_submitter): # -> bool	
-        subscribe.insert().values(group_id=group_id, user_id=user_id, is_submitter=is_submitter,time=datetime.now())
-        db.session.commit()
-        return True
+		subscribe.insert().values(group_id=group_id, user_id=user_id, is_submitter=is_submitter,time=datetime.now())
+		db.session.commit()
+		return True
 
 	def ban_user(self, group_id, admin_id, banned_by, is_shadow): # -> bool
 		ban.insert().values(group_id=group_id, admin_id=admin_id, banned_by=banned_by, is_shadow=is_shadow,time=datetime.now())
-        db.session.commit()
-        return True
+		db.session.commit()
+		return True
 
 

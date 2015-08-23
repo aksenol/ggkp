@@ -22,7 +22,6 @@ class Comment(db.Model):
     #backrefs
     #post
 
-  
     def __init__(self, comment):
         self.message = comment.message
         self.reply_to = comment.reply_to

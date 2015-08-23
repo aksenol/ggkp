@@ -31,23 +31,23 @@ class Group(db.Model):
 
 	def get_hot_groups(self, page=0): # -> group_id []
 		groups = Group.query.all()
-        return [group.group_id for group in groups]
+		return [group.group_id for group in groups]
 
 	def get_trending_groups(self, page=0): # -> group_id []
 		groups = Group.query.all()
-        return [group.group_id for group in groups]
+		return [group.group_id for group in groups]
 
 	def	get_new_groups(self, page=0): # -> group_id []
 		groups = Group.query.all()
-        return [group.group_id for group in groups]
+		return [group.group_id for group in groups]
 
 	def get_group(self, group_id): # -> group
 		return Group.query.filter(Group.group_id == group_id).first()
 
 	def create_group(self, group):
-        temp = Group(group)
-        db.session.add(temp)
-        db.commit()
-        return temp.group_id
+		temp = Group(group)
+		db.session.add(temp)
+		db.commit()
+		return temp.group_id
 
 
