@@ -36,7 +36,7 @@ class Comment(db.Model):
     def get_trending_comments(post_id): # -> comment[]
         pass
 
-    def write_comment(post_id, text, reply_to=’’): # -> comment_id
+    def write_comment(post_id, text, reply_to=''): # -> comment_id
         pass
 
     def vote_comment(is_up, comment_id, user_id):
