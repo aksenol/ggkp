@@ -43,8 +43,7 @@ class Group(db.Model):
 
 	def create_group(
 			name, desc, is_public, creator_id, 
-			tag='',picture='',
-			comments_en=true, upvote_en=true): # -> group_id
+			tag='',picture='', settings): # -> group_id
 		pass
 
 
