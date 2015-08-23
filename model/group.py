@@ -17,33 +17,37 @@ class Group(db.Model):
 	#subscribers -> list
 	#banned_users -> list
 
-	def __init__(self, name, description, tag, is_public, creator_id, settings):
-		self.name = name
-		self.description = description
-		self.tag = tag
-		self.is_public = is_public
-		self.creator_id = creator_id
-		self.settings = settings
+	def __init__(self, group):
+		self.name = group.name
+		self.description = group.description
+		self.tag = group.tag
+		self.is_public = group.is_public
+		self.creator_id = group.creator_id
+		self.settings = group.settings
 		self.creation_date = datetime.now()
 
 	def __repr__(self):
 		return '<Group %r>' % self.group_id
 
-	def get_hot_groups(page=0): # -> group_id []
-		pass
+	def get_hot_groups(self, page=0): # -> group_id []
+		groups = Group.query.all()
+        return [group.group_id for group in groups]
 
-	def get_trending_groups(page=0): # -> group_id []
-		pass
+	def get_trending_groups(self, page=0): # -> group_id []
+		groups = Group.query.all()
+        return [group.group_id for group in groups]
 
-	def	get_new_groups(page=0): # -> group_id []
-		pass
+	def	get_new_groups(self, page=0): # -> group_id []
+		groups = Group.query.all()
+        return [group.group_id for group in groups]
 
-	def get_group(group_id): # -> group
-		pass
+	def get_group(self, group_id): # -> group
+		return Group.query.filter(Group.group_id == group_id).first()
 
-	def create_group(
-			name, desc, is_public, creator_id, 
-			tag='',picture='', settings=''): # -> group_id
-		pass
+	def create_group(self, group):
+        temp = Group(group)
+        db.session.add(temp)
+        db.commit()
+        return temp.group_id
 
 

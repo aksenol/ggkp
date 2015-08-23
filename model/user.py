@@ -47,15 +47,18 @@ class User(db.Model):
 	def __repr__(self):
 		return '<User %r>' % self.user_id
 
-	def get_subscribed_groups(user_id, page=0): # -> group_id []
-		pass
+	def get_subscribed_groups(self, user_id, page=0): # -> group_id []
+		user = User.query.filter(User.user_id == user_id).first()
+        return [group.group_id for group in user.subscribed_groups]
 
-	def subscribe_to(group_id, user_id, is_submitter): # -> bool	
-		pass
+	def subscribe_to(self, group_id, user_id, is_submitter): # -> bool	
+        subscribe.insert().values(group_id=group_id, user_id=user_id, is_submitter=is_submitter,time=datetime.now())
+        db.session.commit()
+        return True
 
-	def get_front_page(user_id): # -> post_id []
-		pass
-	def ban_user(group_id, admin_id, is_shadow): # -> bool
-		pass
+	def ban_user(self, group_id, admin_id, banned_by, is_shadow): # -> bool
+		ban.insert().values(group_id=group_id, admin_id=admin_id, banned_by=banned_by, is_shadow=is_shadow,time=datetime.now())
+        db.session.commit()
+        return True
 
 
