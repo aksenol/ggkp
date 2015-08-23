@@ -26,3 +26,18 @@ class Group(db.Model):
 
 	def __repr__(self):
 		return '<Group %r>' % self.group_id
+	def get_hot_groups(page=0): # -> group_id []
+		pass
+	def get_trending_groups(page=0): # -> group_id []
+		pass
+	def	get_new_groups(page=0): # -> group_id []
+		pass
+	def get_group(group_id): # -> group
+		pass
+	def create_group(
+			name, desc, is_public, creator_id, 
+			desc=’’, tag=’’,picture=’’,
+			comments_en=true, upvote_en=true): # -> group_id
+		pass
+
+

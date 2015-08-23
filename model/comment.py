@@ -18,13 +18,26 @@ class Comment(db.Model):
 
     votes = db.relationship('User', secondary=vote)
   
-
     def __init__(self, message, reply_to, user_id, post_id):
         self.message = message
         self.reply_to = reply_to
         self.user_id  = user_id
         self.post_id = post_id
 
-
     def __repr__(self):
         return '<Comment %r>' % self.comment_id
+
+    def get_popular_comments(post_id): # -> comment[]
+        pass
+
+    def get_newest_comments(post_id): # -> comment[]
+        pass
+
+    def get_trending_comments(post_id): # -> comment[]
+        pass
+
+    def write_comment(post_id, text, reply_to=’’): # -> comment_id
+        pass
+
+    def vote_comment(is_up, comment_id, user_id):
+        pass

@@ -44,6 +44,18 @@ class User(db.Model):
 		self.gender = gender
 		self.reg_date = datetime.now()
 
-
 	def __repr__(self):
 		return '<User %r>' % self.user_id
+
+	def get_subscribed_groups(user_id, page=0): # -> group_id []
+		pass
+
+	def add_subscriber(group_id, user_id, is_submitter): # -> bool	
+		pass
+
+	def get_front_page(user_id): # -> post_id []
+		pass
+	def ban_user(group_id, admin_id, is_shadow): # -> bool
+		pass
+
+

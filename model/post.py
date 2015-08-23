@@ -29,3 +29,18 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post %r>' % self.post_id
+
+    def get_hot_feed(group_id, page=0): # -> post_id[]
+        pass
+
+    def get_trending_feed(group_id, page=0): # -> post_id[]
+        pass
+
+    def get_new_feed(group_id, page=0): # -> post_id[]
+        pass
+
+    def get_post(post_id): # -> post
+        pass
+        
+    def create_post(group_id,user_id, name, desc, url, picture, settings): # -> post_id
+        pass
