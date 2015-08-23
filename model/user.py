@@ -49,7 +49,7 @@ class User(db.Model):
 
 	def get_subscribed_groups(self, user_id, page=0): # -> group_id []
 		user = User.query.filter(User.user_id == user_id).first()
-        return [group.group_id for group in user.subscribed_groups]
+		return [group.group_id for group in user.subscribed_groups]
 
 	def subscribe_to(self, group_id, user_id, is_submitter): # -> bool	
 		subscribe.insert().values(group_id=group_id, user_id=user_id, is_submitter=is_submitter,time=datetime.now())
